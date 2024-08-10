@@ -106,23 +106,26 @@ Then ('I click on sign in Button', function(){
         cy.get('#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary').click()
     })
     
-When ('I click phones category Button', function(){
-        cy.get('.list-group a:nth-child(2)').click()
+When ('I click laptop category Button', function(){
+    cy.get('.list-group a:nth-child(3)').click()
         cy.wait(2000)
     })
-Then ('I select a phones', function(){
-        cy.get('#tbodyid > div:nth-child(3) > div > div > h4 > a').contains('Nexus 6').click()
+Then ('I select a laptop', function(){
+        cy.get('#tbodyid > div:nth-child(3) > div > div > h4 > a').contains('MacBook air').click()
     })
-    
+
 When ('I click the add to cart button', function(){
     cy.get('.btn').contains('Add to cart').click()
     })
 Then ('I validate alert Product added', function(){
-        cy.on('window:alert', (str) =>
-            {
-                expect(str).to.equal('Product added.')
-            })
-       })
+    var AddToCartArr = Array.from({length:3},(v,k)=>k+1)
+    cy.wrap(AddToCartArr).each((index) => {
+        cy.get('.col-sm-12 > .btn').click()
+        cy.on('window:alert', (str) =>{
+            expect(str).to.equal('Product added.')
+        })
+    })
+})
     
 When ('I validate the product name and product Quantity', function(){
         
@@ -130,9 +133,9 @@ When ('I validate the product name and product Quantity', function(){
             cy.wait(3000)
             const num = 1
             var sum = 0
-            cy.get('#tbodyid > div:nth-child(3)').each(($el, index, $list) => { 
+            cy.get('#tbodyid > div:nth-child(3) > div > div > h4 > a').each(($el, index, $list) => { 
                 const Productname = $el.text()
-                cy.expect(Productname).to.equal('Nexus 6')
+                cy.expect(Productname).to.equal('MacBook air')
                 cy.log(Productname) 
             })
             cy.get('#tbodyid > div:nth-child(3)').each(($el, index, $list) => { 
@@ -181,32 +184,32 @@ Then ('I click on sign in Button', function(){
             cy.get('#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary').click()
         })
         
-When ('I click phones category Button', function(){
-            cy.get('.list-group a:nth-child(2)').click()
+When ('I click monitors category Button', function(){
+            cy.get('.list-group a:nth-child(4)').click()
             cy.wait(2000)
-        })
-Then ('I select a phones', function(){
-            cy.get('#tbodyid > div:nth-child(3) > div > div > h4 > a').contains('Nexus 6').click()
-        })
+})
+Then ('I select a monitor', function(){
+        cy.get('.hrefch').contains('Apple monitor 24').click()
+ })
         
 When ('I click the add to cart button', function(){
         cy.get('.btn').contains('Add to cart').click()
-        })
+})
 Then ('I validate alert Product added', function(){
-            cy.on('window:alert', (str) =>
-                {
-                    expect(str).to.equal('Product added.')
-                })
-           })
+    cy.on('window:alert', (str) =>
+    {
+        expect(str).to.equal('Product added.')
+        })
+    })
         
 When ('I validate the product name and product Quantity', function(){
     cy.get('#cartur').click()
     cy.wait(3000)
     const num = 1
     var sum = 0
-    cy.get('#tbodyid > div:nth-child(3)').each(($el, index, $list) => { 
+    cy.get('.hrefch').each(($el, index, $list) => { 
     const Productname = $el.text()
-    cy.expect(Productname).to.equal('Nexus 6')
+    cy.expect(Productname).to.equal('Apple monitor 24')
     cy.log(Productname) 
     })
     cy.get('#tbodyid > div:nth-child(3)').each(($el, index, $list) => { 
