@@ -3,7 +3,7 @@ Feature: Demoblaze Ecommerce test validation​
 @regression @smoke
 
 
-@phones category
+@phonescategory
 Scenario: Validate login with valid credentials
     Given I open demoblaze Ecommerce website
     When I click the login Button
