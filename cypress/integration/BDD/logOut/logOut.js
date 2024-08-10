@@ -33,9 +33,9 @@ Then('i verify Login form is accessible', function () {
 
 When('i enter username and password', function () {
     cy.wait(3000)
-    cy.get('#loginusername').should('be.visible').type(this.data.Username);
+    cy.get('#loginusername').should('be.visible').type(this.data.username);
     cy.wait(3000)
-    cy.get('#loginpassword').should('be.visible').type(this.data.Password);
+    cy.get('#loginpassword').should('be.visible').type(this.data.password);
 });
 
 When('i click on Login button', function () {
@@ -44,14 +44,14 @@ When('i click on Login button', function () {
 });
 
 Then('i verify successful Login', function () {
-    cy.get('#nameofuser', { timeout: 10000 }).should('contain.text', 'Welcome ' + this.data.Username);
+    cy.get('#nameofuser', { timeout: 10000 }).should('contain.text', 'Welcome ' + this.data.username);
 });
 
 When('i click on Logout', function () {
     cy.get('#logout2').should('be.visible').click();
 });
 
-Then('i verify successful Logout', function () {
+Then("i verify successful logout", function () {
     // cy.get('#nameofuser').should('not.exist');
     cy.get('#login2').should('be.visible'); // Ensure the login button is visible again
 });

@@ -10,4 +10,4 @@ Scenario: Validate successful Logout
         Then i click on Login button
         Then i verify successful Login
         When i click on Logout
-        Then i verify successful Logout
+        Then i verify successful logout
