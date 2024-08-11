@@ -13,5 +13,5 @@ Scenario: validate adding phones to cart
     When I click phones category Button
     Then I select a phones
     When I click the add to cart button
-    Then I validate alert - "Product added"
+    Then I validate alert "Product added"
     Then I validate the product price

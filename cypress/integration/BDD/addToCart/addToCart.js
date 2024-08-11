@@ -48,11 +48,14 @@ When('I click the add to cart button', function () {
 cy.get('.btn.btn-success.btn-lg').click()
 })
 
-Then('I validate alert Product added', function () {
+Then('I validate alert "Product added"', function () {
     cy.on('window:alert', (str) => {
         expect(str).to.equal('Product added.')
     })
 })
+// Then("I validate alert - {string}", function (string) {
+//     return "pending";
+//     });
 Then('I validate the product price', function () {
     // var TotalNum = 0
     // cy.get("h3[class='price-container']").each(($el, index, $list) => {
